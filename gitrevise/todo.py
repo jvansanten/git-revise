@@ -224,7 +224,7 @@ def edit_todos(repo: Repository, todos: List[Step], msgedit=False) -> List[Step]
     # Parse the response back into a list of steps
     result = []
     for line in response.splitlines():
-        if line.isspace():
+        if not line.strip():
             continue
         step = Step.parse(repo, line.decode(errors="replace").strip())
         result.append(step)
